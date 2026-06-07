@@ -1,0 +1,1292 @@
+/* ==========================================================================
+   SPIDER-MAN: MILES MORALES COMIC-BOOK THEME DESIGN SYSTEM & CSS
+   ========================================================================== */
+
+/* 1. THEME DEFINITIONS & COLORS */
+:root {
+    --bg-dark: #07070a;
+    --bg-charcoal: #0c0c10;
+    --bg-panel: #111116;
+    
+    /* Miles Morales Visual Accents */
+    --neon-red: #ff003c;
+    --neon-gold: #ffb700; /* Venom Blast */
+    --neon-cyan: #00f3ff; /* Glitch highlight */
+    
+    /* Text */
+    --text-light: #ffffff;
+    --text-muted: #8e95a5;
+    
+    /* Comic Neobrutalism Borders & Shadows */
+    --comic-border-width: 3px;
+    --comic-border: var(--comic-border-width) solid #000000;
+    --comic-shadow-large: 6px 6px 0px #000000;
+    --comic-shadow-small: 3px 3px 0px #000000;
+    --comic-shadow-red: 4px 4px 0px var(--neon-red);
+    --comic-shadow-gold: 4px 4px 0px var(--neon-gold);
+    
+    /* Fonts */
+    --font-comic: 'Bangers', cursive;
+    --font-tech: 'Orbitron', sans-serif;
+    --font-ui: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Transitions */
+    --transition-snap: all 0.2s steps(4);
+    --transition-smooth: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 2. BASE INITIALIZATION & HALFTONE OVERLAY */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-dark);
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Halftone Pop-art Dot Pattern Overlay */
+.halftone-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.5) 15%, transparent 16%),
+        radial-gradient(rgba(0, 0, 0, 0.5) 15%, transparent 16%);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+    z-index: 10;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+/* Custom Web Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--neon-red);
+    border: 2px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-gold);
+}
+
+/* Dynamic Interactive Bio-Electric Canvas */
+#gravity-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+}
+
+/* 3. COMIC NAVBAR SYSTEM */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    z-index: 100;
+    background: rgba(7, 7, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: var(--comic-border);
+    transition: var(--transition-smooth);
+}
+
+.nav-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-comic);
+    font-size: 1.8rem;
+    color: var(--text-light);
+    text-decoration: none;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: var(--comic-shadow-small);
+}
+.logo-spider {
+    color: var(--neon-red);
+    filter: drop-shadow(2px 2px 0px #000);
+}
+.logo-dot {
+    color: var(--neon-red);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-family: var(--font-ui);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0.3rem 0.6rem;
+    transition: var(--transition-snap);
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--neon-red);
+    background-color: #000000;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px var(--neon-cyan);
+    transform: rotate(-1deg);
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+}
+.btn-navbar {
+    font-family: var(--font-ui);
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+    border: var(--comic-border);
+    background-color: var(--neon-gold);
+    box-shadow: var(--comic-shadow-small);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-snap);
+}
+.btn-navbar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+    background-color: var(--neon-red);
+    color: #ffffff;
+}
+.venom-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #000000;
+    border-radius: 50%;
+    animation: simplePulse 1.2s steps(4) infinite;
+}
+
+@keyframes simplePulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.mobile-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light);
+    border: 1px solid #000;
+    transition: var(--transition-snap);
+}
+
+/* 4. HERO SECTION LAYOUT */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+/* Hero Texts & Badge */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #000000;
+    border: var(--comic-border);
+    padding: 0.5rem 1.1rem;
+    box-shadow: var(--comic-shadow-small);
+    margin-bottom: 2.2rem;
+    transform: rotate(-0.5deg);
+}
+.status-pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--neon-gold);
+    animation: statusPulseAnim 1.6s steps(4) infinite;
+}
+.status-text {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+@keyframes statusPulseAnim {
+    0% { box-shadow: 0 0 0 0 rgba(255, 183, 0, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 183, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 183, 0, 0); }
+}
+
+.hero-title {
+    font-family: var(--font-comic);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 4px 4px 0px #000;
+}
+.text-prefix {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #ffffff;
+}
+
+/* Spiderman Chromatic Neon Glows */
+.neon-glow-red {
+    color: var(--neon-red);
+    text-shadow: -2px -1px 0 var(--neon-cyan), 2px 1.5px 0 #000;
+}
+.neon-glow-gold {
+    color: var(--neon-gold);
+    text-shadow: -2px -1px 0 var(--neon-red), 2px 1.5px 0 #000;
+}
+.neon-glow-cyan {
+    color: var(--neon-cyan);
+    text-shadow: -2px -1px 0 var(--neon-red), 2px 1.5px 0 #000;
+}
+
+.typewriter-cursor {
+    color: var(--neon-red);
+    animation: cursorBlink 0.6s steps(2) infinite;
+}
+@keyframes cursorBlink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+}
+
+/* Spiderman Buttons with Neobrutalist styles */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    border: var(--comic-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition-snap);
+}
+
+.btn-primary {
+    background-color: var(--neon-red);
+    color: #ffffff;
+    box-shadow: var(--comic-shadow-large);
+}
+.btn-primary:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px #000;
+    background-color: var(--neon-gold);
+    color: #000000;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: var(--comic-shadow-large);
+}
+.btn-secondary:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px #000;
+    background-color: var(--neon-cyan);
+}
+
+/* 5. HERO VISUAL (RIGHT SIDE - COMIC CARDS ON THE TWOS) */
+.hero-visual {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Comic Panel Containers */
+.comic-panel {
+    background-color: var(--bg-panel);
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow-large);
+    border-radius: 4px;
+    position: absolute;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.panel-stripe {
+    height: 8px;
+    background: linear-gradient(90deg, var(--neon-red), var(--neon-gold));
+    border-bottom: 2px solid #000000;
+}
+
+/* Main Card on the Twos */
+.main-card {
+    width: 330px;
+    padding: 1.25rem;
+    z-index: 5;
+    transform: rotate(-1.5deg);
+    animation: floatComicMain 7s steps(12) infinite; /* low fps stepped animation */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 0.5rem;
+}
+.window-dots {
+    display: flex;
+    gap: 5px;
+}
+.window-dots span {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+}
+.dot-red { background-color: var(--neon-red); }
+.dot-yellow { background-color: var(--neon-gold); }
+.dot-green { background-color: var(--neon-cyan); }
+
+.card-title {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.card-body {
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    margin-bottom: 1.2rem;
+}
+.code-line {
+    white-space: pre;
+}
+.code-keyword { color: var(--neon-red); font-weight: bold; }
+.code-property { color: var(--neon-gold); }
+.code-string { color: var(--neon-cyan); }
+.code-number { color: #50e3c2; }
+.code-comment { color: #5c6370; }
+.indent {
+    padding-left: 1.25rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #000000;
+    padding-top: 0.75rem;
+}
+.footer-stat {
+    display: flex;
+    flex-direction: column;
+}
+.stat-num {
+    font-family: var(--font-comic);
+    font-size: 1.3rem;
+    color: var(--neon-red);
+    -webkit-text-stroke: 0.5px #000;
+}
+.stat-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.footer-divider {
+    height: 20px;
+    width: 2px;
+    background-color: #000000;
+}
+
+/* Floating Comic Speech Bubble (Sub-element 1) */
+.comic-bubble {
+    background-color: #ffffff;
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow-small);
+    border-radius: 50%;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 5%;
+    right: 5%;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: floatComicBubble 5s steps(10) infinite alternate;
+}
+.bubble-tail {
+    position: absolute;
+    bottom: -15px;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 18px solid #ffffff;
+    z-index: 1;
+}
+/* Border of bubble tail */
+.comic-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -19px;
+    left: 23px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #000000;
+    z-index: -1;
+}
+.bubble-text {
+    font-family: var(--font-comic);
+    font-size: 1.8rem;
+    color: #000000;
+    transform: rotate(-10deg);
+}
+
+/* Floating Mini Stats Card (Sub-element 2) */
+.float-stats-card {
+    width: 200px;
+    padding: 0.9rem;
+    bottom: 5%;
+    left: 2%;
+    z-index: 7;
+    transform: rotate(2deg);
+    animation: floatComicStats 8s steps(14) infinite alternate;
+}
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.stat-title {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.stat-percentage {
+    font-family: var(--font-comic);
+    font-size: 1.1rem;
+    color: var(--neon-gold);
+}
+.stat-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #000000;
+    border: 1.5px solid #000000;
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+.stat-bar-fill {
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-red), var(--neon-gold));
+    animation: barLoading 3s steps(6) infinite alternate;
+}
+.stat-footer {
+    display: flex;
+}
+.stat-tag {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+}
+
+/* Floating Accent Graphics */
+.floating-accent {
+    position: absolute;
+    pointer-events: none;
+    z-index: 3;
+}
+.dot-grid {
+    width: 60px;
+    height: 60px;
+    background-image: radial-gradient(var(--neon-red) 25%, transparent 26%);
+    background-size: 10px 10px;
+    opacity: 0.4;
+    top: 40%;
+    right: 75%;
+    animation: floatComicStats 11s steps(10) infinite alternate-reverse;
+}
+.slash-red {
+    width: 80px;
+    height: 4px;
+    background: var(--neon-red);
+    transform: rotate(-30deg);
+    box-shadow: 2px 2px 0px #000;
+    bottom: 30%;
+    right: 15%;
+    animation: floatComicMain 9s steps(8) infinite reverse;
+}
+
+/* 6. GRAVITY/COMIC STEPPED ANIMATIONS */
+@keyframes floatComicMain {
+    0% { transform: translateY(0px) rotate(-1.5deg); }
+    50% { transform: translateY(-16px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(-1.5deg); }
+}
+
+@keyframes floatComicBubble {
+    0% { transform: translateY(0px) rotate(-10deg) scale(1); }
+    50% { transform: translateY(-24px) rotate(5deg) scale(1.05); }
+    100% { transform: translateY(0px) rotate(-10deg) scale(1); }
+}
+
+@keyframes floatComicStats {
+    0% { transform: translateY(0px) rotate(2deg); }
+    50% { transform: translateY(18px) rotate(-2deg); }
+    100% { transform: translateY(0px) rotate(2deg); }
+}
+
+@keyframes barLoading {
+    0% { width: 35%; }
+    100% { width: 90%; }
+}
+
+/* 7. SCROLL DOWN MOUSE */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: var(--transition-snap);
+}
+.scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+}
+.scroll-text {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+.scroll-mouse {
+    width: 22px;
+    height: 34px;
+    border: var(--comic-border);
+    background-color: #000000;
+    box-shadow: var(--comic-shadow-small);
+    border-radius: 20px;
+    position: relative;
+}
+.scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--neon-red);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheelAnim 1.6s steps(4) infinite;
+}
+
+@keyframes scrollWheelAnim {
+    0% { top: 6px; opacity: 1; }
+    50% { top: 18px; opacity: 0; }
+    100% { top: 6px; opacity: 1; }
+}
+
+/* ==========================================================================
+   8. PAGE SECTIONS (PORTFOLIO, CAPABILITIES, ABOUT/CONTACT)
+   ========================================================================== */
+.page-section {
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 5;
+    scroll-margin-top: 75px; /* Offset for sticky header scrolling */
+    border-top: var(--comic-border);
+    background-color: var(--bg-dark);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-tag {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--neon-red);
+    background: #000000;
+    border: var(--comic-border);
+    padding: 0.3rem 0.8rem;
+    box-shadow: var(--comic-shadow-small);
+    margin-bottom: 0.75rem;
+}
+
+.comic-title {
+    font-family: var(--font-comic);
+    font-size: 3.5rem;
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: var(--comic-shadow-large);
+    letter-spacing: 1px;
+}
+
+/* Portfolio Project Card Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: var(--transition-snap);
+}
+.project-card:hover {
+    transform: translate(-4px, -4px) rotate(-1deg);
+    box-shadow: 10px 10px 0px #000;
+    border-color: var(--neon-red);
+}
+
+.project-image-wrapper {
+    height: 180px;
+    border-bottom: var(--comic-border);
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.project-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000000;
+    border: var(--comic-border);
+    padding: 0.2rem 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.project-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    transition: var(--transition-snap);
+}
+.code-visual { background: linear-gradient(135deg, #111 0%, #222 100%); color: var(--neon-cyan); }
+.venom-visual { background: linear-gradient(135deg, #1a1505 0%, #2b1f07 100%); color: var(--neon-gold); }
+.spider-visual { background: linear-gradient(135deg, #1a050d 0%, #2e0818 100%); color: var(--neon-red); }
+
+.project-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 15%, transparent 16%);
+    background-size: 6px 6px;
+    pointer-events: none;
+}
+.project-card:hover .project-visual {
+    filter: saturate(1.8) contrast(1.2);
+    /* Chromatic aberration glitch simulation */
+    text-shadow: -2px -1px 0 var(--neon-cyan), 2px 1.5px 0 var(--neon-red);
+}
+
+.project-details {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-family: var(--font-ui);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+.project-card:hover .project-title {
+    color: var(--neon-red);
+}
+
+.project-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #000;
+    background-color: var(--text-muted);
+    padding: 0.15rem 0.5rem;
+    border: 1.5px solid #000;
+}
+.project-card:hover .tech-tag {
+    background-color: var(--neon-cyan);
+}
+
+/* Services Capabilities Section */
+.services-section {
+    background-color: var(--bg-charcoal);
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.service-row {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    transition: var(--transition-snap);
+}
+.service-row:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px #000;
+    border-color: var(--neon-gold);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-right: 2.5rem;
+    filter: drop-shadow(3px 3px 0px #000);
+}
+
+.service-info {
+    flex-grow: 1;
+}
+
+.service-name {
+    font-family: var(--font-ui);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+.service-row:hover .service-name {
+    color: var(--neon-gold);
+}
+
+.service-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 750px;
+}
+
+.service-rating {
+    font-family: var(--font-comic);
+    font-size: 1.2rem;
+    color: #000000;
+    background-color: var(--neon-gold);
+    border: var(--comic-border);
+    padding: 0.4rem 1rem;
+    transform: rotate(2deg);
+    box-shadow: var(--comic-shadow-small);
+}
+.service-row:hover .service-rating {
+    background-color: var(--neon-red);
+    color: #ffffff;
+    transform: rotate(-2deg);
+}
+
+/* Agent Dossier & Contact Form Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.dossier-card {
+    position: relative;
+    padding: 2rem;
+}
+.dossier-photo {
+    width: 90px;
+    height: 90px;
+    background-color: #000000;
+    border: var(--comic-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: var(--comic-shadow-small);
+}
+.spider-logo {
+    font-size: 2.5rem;
+    filter: drop-shadow(2px 2px 0 var(--neon-red));
+}
+
+.dossier-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.dossier-line {
+    font-family: var(--font-ui);
+    font-size: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.4rem;
+}
+.dossier-key {
+    font-weight: 700;
+    color: var(--neon-red);
+    margin-right: 0.5rem;
+}
+.dossier-val {
+    color: #ffffff;
+    font-weight: 600;
+}
+.text-neon-green {
+    color: #27c93f;
+    text-shadow: 0 0 5px rgba(39, 201, 63, 0.3);
+}
+
+.dossier-bio {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 1.5rem;
+}
+
+/* Speech Bubble Contact Form (Pop Art Style) */
+.comic-speech-bubble-form {
+    background-color: #ffffff;
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow-large);
+    border-radius: 8px;
+    padding: 2.2rem;
+    position: relative;
+    color: #000000;
+}
+
+.bubble-arrow-left {
+    position: absolute;
+    left: -20px;
+    top: 50px;
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 20px solid #ffffff;
+    z-index: 2;
+}
+.comic-speech-bubble-form::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 48px;
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 24px solid #000000;
+    z-index: 1;
+}
+
+.form-title {
+    font-family: var(--font-comic);
+    font-size: 2.2rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000;
+    letter-spacing: 0.5px;
+}
+
+.form-group input, .form-group textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #000000;
+    background-color: #f7f9fa;
+    color: #000000;
+    border-radius: 0;
+    outline: none;
+}
+.form-group input:focus, .form-group textarea:focus {
+    background-color: #ffffff;
+    box-shadow: 2.5px 2.5px 0px var(--neon-red);
+}
+
+.btn-submit {
+    margin-top: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+}
+.btn-submit:hover {
+    background-color: var(--neon-red);
+    color: #ffffff;
+}
+
+/* Site Footer */
+.site-footer {
+    background-color: #000000;
+    padding: 3rem 2rem;
+    border-top: var(--comic-border);
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-ui);
+    color: var(--text-muted);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   9. COMIC SFX CLICK-SPAWN VISUALS (.COMIC-POP)
+   ========================================================================== */
+.comic-pop {
+    position: fixed;
+    z-index: 99999;
+    font-family: var(--font-comic);
+    font-size: 2.2rem;
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px #000000;
+    padding: 0.3rem 1.2rem;
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow-small);
+    border-radius: 4px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: popSplash 0.55s steps(6) forwards;
+}
+
+.pop-red { background-color: var(--neon-red); }
+.pop-gold { background-color: var(--neon-gold); color: #000; }
+.pop-cyan { background-color: var(--neon-cyan); color: #000; }
+
+@keyframes popSplash {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(-15deg); opacity: 0; }
+    25% { transform: translate(-50%, -50%) scale(1.35) rotate(8deg); opacity: 1; }
+    60% { transform: translate(-50%, -50%) scale(1.15) rotate(-6deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.75) rotate(4deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   10. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .hero-title { font-size: 3.5rem; }
+    .project-grid { gap: 1.5rem; }
+    .comic-title { font-size: 3rem; }
+}
+
+@media (max-width: 992px) {
+    .navbar { padding: 0.8rem 1.5rem; }
+    
+    .mobile-toggle { display: flex; }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(7, 7, 10, 0.98);
+        border-left: var(--comic-border);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: var(--transition-snap);
+        z-index: 99;
+    }
+    .nav-menu.active { right: 0; }
+    
+    .mobile-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--neon-red);
+    }
+    .mobile-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .mobile-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--neon-red);
+    }
+    
+    .nav-cta { margin-right: 2.5rem; }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 4.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 4rem;
+    }
+    .hero-content { align-items: center; }
+    .hero-description { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    
+    .hero-visual {
+        height: 400px;
+        order: -1;
+    }
+    .main-card {
+        position: relative;
+        margin: 0 auto;
+    }
+    .comic-bubble {
+        top: -12%;
+        right: 15%;
+    }
+    .float-stats-card {
+        bottom: -12%;
+        left: 10%;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 1.8rem;
+    }
+    .service-icon { margin-right: 0; }
+    .service-rating { transform: rotate(0); width: fit-content; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .bubble-arrow-left {
+        left: 50px;
+        top: -20px;
+        border-left: 14px solid transparent;
+        border-right: 14px solid transparent;
+        border-bottom: 20px solid #ffffff;
+        border-top: none;
+    }
+    .comic-speech-bubble-form::before {
+        left: 48px;
+        top: -24px;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 24px solid #000000;
+        border-top: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        padding: 1rem 1.5rem 2rem 1.5rem;
+        margin: 0 -1.5rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .project-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .project-card {
+        flex: 0 0 290px;
+        scroll-snap-align: start;
+        box-shadow: 4px 4px 0px #000;
+    }
+    .project-card:hover {
+        transform: translate(-2px, -2px) rotate(-0.5deg);
+        box-shadow: 6px 6px 0px #000;
+    }
+}
+
+@media (max-width: 576px) {
+    html { font-size: 14px; }
+    .hero-title { font-size: 2.5rem; }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .nav-cta { display: none; }
+    
+    .main-card { width: 280px; }
+    .comic-bubble {
+        width: 90px;
+        height: 90px;
+        top: -15%;
+        right: 5%;
+    }
+    .bubble-text { font-size: 1.4rem; }
+    .float-stats-card {
+        width: 170px;
+        bottom: -15%;
+        left: 5%;
+    }
+}

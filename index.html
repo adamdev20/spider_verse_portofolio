@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spider-Man Miles Morales Portfolio landing page. Custom 2D comic styling, halftone textures, low-framerate animations, and visual SFX.">
+    <title>Adam Snyder // Web Dev Portfolio - Comic Book & Pop-Art Visuals</title>
+    
+    <!-- Google Fonts: Bangers (Comic), Orbitron (Tech), Rajdhani (UI), and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;600&family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Halftone Overlay -->
+    <div class="halftone-overlay"></div>
+
+    <!-- Interactive Canvas Background for bio-electric particles -->
+    <canvas id="gravity-canvas"></canvas>
+
+    <!-- Glass-Graffiti Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-spider">🕸️</span> A. SNYDER<span class="logo-dot">!</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="#about" class="btn-navbar">
+                    <span>CONNECT</span>
+                    <span class="venom-indicator"></span>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" aria-label="Toggle Menu" id="mobile-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HOME / HERO SECTION -->
+    <main class="hero-section" id="home">
+        <div class="hero-container">
+            <!-- Left Side: Main Text & CTAs -->
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="status-pulse"></span>
+                    <span class="status-text">BIO-ELECTRICITY STATE: CHARGED // SPIDER-VERSE v4.2</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    CRAFTING NEXT-GEN<br>
+                    <span class="text-prefix">DIGITAL</span> 
+                    <span id="typewriter" class="neon-glow-red"></span><span class="typewriter-cursor">|</span>
+                </h1>
+                
+                <p class="hero-description">
+                    I build web applications with high-fidelity creative layouts, comic-book aesthetics, and low-framerate visual flair that make the web feel alive and interactive.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#work" class="btn btn-primary" id="btn-primary">
+                        <span>LAUNCH MISSIONS</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                    <a href="#about" class="btn btn-secondary" id="btn-secondary">
+                        <span>GET IN TOUCH</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: Interactive Floating Comic Panels -->
+            <div class="hero-visual">
+                <!-- Large Central Comic Panel Card -->
+                <div class="comic-panel main-card" id="main-glass-card">
+                    <div class="panel-stripe"></div>
+                    <div class="card-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <span class="card-title">SPIDER_DOSSIER.MD</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-line"><span class="code-keyword">const</span> hero = {</div>
+                        <div class="code-line indent"><span class="code-property">alias</span>: <span class="code-string">'ADAM SNYDER'</span>,</div>
+                        <div class="code-line indent"><span class="code-property">powers</span>: [<span class="code-string">'Bio-Electricity'</span>, <span class="code-string">'Invisibility'</span>],</div>
+                        <div class="code-line indent"><span class="code-property">fps</span>: <span class="code-number">12</span>, <span class="code-comment">// on the twos style</span></div>
+                        <div class="code-line indent"><span class="code-property">suit</span>: <span class="code-string">'Black & Red Spray Paint'</span></div>
+                        <div class="code-line">};</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-stat">
+                            <span class="stat-num">99%</span>
+                            <span class="stat-label">STABILITY</span>
+                        </div>
+                        <div class="footer-divider"></div>
+                        <div class="footer-stat">
+                            <span class="stat-num">12 FPS</span>
+                            <span class="stat-label">ANIMATION</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Auxiliary Comic Bubble (THWIP!) -->
+                <div class="comic-bubble float-bubble" id="float-orb">
+                    <div class="bubble-tail"></div>
+                    <span class="bubble-text">THWIP!</span>
+                </div>
+
+                <!-- Floating Auxiliary Mini Stats Card -->
+                <div class="comic-panel float-stats-card" id="float-stats">
+                    <div class="stat-header">
+                        <span class="stat-title">VENOM BLAST ENERGY</span>
+                        <span class="stat-percentage">89%</span>
+                    </div>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill"></div>
+                    </div>
+                    <div class="stat-footer">
+                        <span class="stat-tag">SURGE: ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Floating Geometric Graphic Accents -->
+                <div class="floating-accent dot-grid"></div>
+                <div class="floating-accent slash-red"></div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">SCROLL TO ORBIT</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- WORK / PORTFOLIO SECTION -->
+    <section class="page-section" id="work">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">MISSION PORTFOLIO</span>
+                <h2 class="section-title comic-title">RECENT MISSIONS</h2>
+            </div>
+            
+            <div class="project-grid">
+                <!-- Project Panel 1 -->
+                <div class="comic-panel project-card">
+                    <div class="panel-stripe"></div>
+                    <div class="project-image-wrapper">
+                        <div class="project-tag">MISSION 01</div>
+                        <div class="project-visual code-visual">
+                            <code>[CYBER_CITY_SYS v2.0]</code>
+                            <div class="visual-dots"></div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">PROJECT: CYBER_CITY</h3>
+                        <p class="project-description">A futuristic web-based environment featuring custom physics engines, interactive shaders, and cyberpunk grids.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS Grid</span>
+                            <span class="tech-tag">CanvasAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Panel 2 -->
+                <div class="comic-panel project-card">
+                    <div class="panel-stripe"></div>
+                    <div class="project-image-wrapper">
+                        <div class="project-tag">MISSION 02</div>
+                        <div class="project-visual venom-visual">
+                            <code>[VENOM_BLAST_SIM]</code>
+                            <div class="visual-dots"></div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">PROJECT: VENOM BLAST</h3>
+                        <p class="project-description">An interactive simulation demonstrating web performance by rendering thousands of particles using bio-electric color profiles.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vanilla JS</span>
+                            <span class="tech-tag">WebGL</span>
+                            <span class="tech-tag">Math Physics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Panel 3 -->
+                <div class="comic-panel project-card">
+                    <div class="panel-stripe"></div>
+                    <div class="project-image-wrapper">
+                        <div class="project-tag">MISSION 03</div>
+                        <div class="project-visual spider-visual">
+                            <code>[HUD_GRAVITY_CTRL]</code>
+                            <div class="visual-dots"></div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">PROJECT: ZERO_G HUD</h3>
+                        <p class="project-description">A customizable heads-up display dashboard overlay reacting to orientation sensors and viewport dynamics.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Responsive</span>
+                            <span class="tech-tag">DOM Transform</span>
+                            <span class="tech-tag">Stepped Anim</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES / CAPABILITIES SECTION -->
+    <section class="page-section services-section" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">CAPABILITIES LIST</span>
+                <h2 class="section-title comic-title">ABILITIES & GEAR</h2>
+            </div>
+            
+            <div class="services-list">
+                <!-- Ability 1 -->
+                <div class="comic-panel service-row">
+                    <div class="service-icon">🕸️</div>
+                    <div class="service-info">
+                        <h3 class="service-name">WEB ARCHITECTURE</h3>
+                        <p class="service-desc">Structuring super-fast, semantic, and highly structured page systems using clean and optimized structures.</p>
+                    </div>
+                    <div class="service-rating">VENOM LEVEL: MAX</div>
+                </div>
+
+                <!-- Ability 2 -->
+                <div class="comic-panel service-row">
+                    <div class="service-icon">⚡</div>
+                    <div class="service-info">
+                        <h3 class="service-name">BIO-ELECTRIC INTERACTIVITY</h3>
+                        <p class="service-desc">Weaving creative animations, particles, and interactive canvases that respond directly to cursor actions.</p>
+                    </div>
+                    <div class="service-rating">VENOM LEVEL: SECURE</div>
+                </div>
+
+                <!-- Ability 3 -->
+                <div class="comic-panel service-row">
+                    <div class="service-icon">💥</div>
+                    <div class="service-info">
+                        <h3 class="service-name">COMIC & POP-ART UI/UX</h3>
+                        <p class="service-desc">Prototyping interfaces with distinctive Neobrutalist layouts, bold border panels, and half-tone printing finishes.</p>
+                    </div>
+                    <div class="service-rating">VENOM LEVEL: EXPERT</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / CONTACT SECTION -->
+    <section class="page-section about-section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">AGENT BRIEFING</span>
+                <h2 class="section-title comic-title">DOSSIER & CONTACT</h2>
+            </div>
+            
+            <div class="about-grid">
+                <!-- Left Column: Dossier -->
+                <div class="comic-panel dossier-card">
+                    <div class="dossier-photo">
+                        <span class="spider-logo">🕸️</span>
+                    </div>
+                    <div class="dossier-details">
+                        <div class="dossier-line"><span class="dossier-key">AGENT:</span> <span class="dossier-val">Adam Snyder</span></div>
+                        <div class="dossier-line"><span class="dossier-key">STATUS:</span> <span class="dossier-val text-neon-green">ACTIVE ON THE TWOS</span></div>
+                        <div class="dossier-line"><span class="dossier-key">LOCATION:</span> <span class="dossier-val">Brooklyn / Web Space</span></div>
+                        <div class="dossier-line"><span class="dossier-key">SPECIALTY:</span> <span class="dossier-val">Vanilla Creative Code</span></div>
+                        <p class="dossier-bio">Fusing realistic modern web performance with low-framerate stylized cartoon visuals. Operating in multiple web dimensions to deliver state-of-the-art interactive layouts.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Speech bubble Form -->
+                <div class="comic-speech-bubble-form">
+                    <div class="bubble-arrow-left"></div>
+                    <h3 class="form-title">SEND A SIGNAL!</h3>
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Signal Sent successfully!');">
+                        <div class="form-group">
+                            <label for="form-name">NAME</label>
+                            <input type="text" id="form-name" placeholder="Who's calling?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">EMAIL</label>
+                            <input type="email" id="form-email" placeholder="Your coordinates" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-msg">MESSAGE</label>
+                            <textarea id="form-msg" rows="3" placeholder="Write your transmission..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span>SEND SIGNAL!</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>© 2026 Adam Snyder Portfolio. All rights reserved. Code on the Twos.</p>
+            <div class="footer-spider-thread"></div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
